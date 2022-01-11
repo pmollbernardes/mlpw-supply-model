@@ -6,7 +6,9 @@ import pandas as pd
 date_parse = lambda dates: [datetime.strptime(d, '%m/%d/%Y %I:%M:%S %p') for d in dates]
 
 def load_daily_generation_data(input_file):
-    records = pd.read_csv(input_file, parse_dates=['datetime_beginning_ept', 'datetime_beginning_utc'], date_parser=date_parse).to_dict('records')
+    records = pd.read_csv(input_file, 
+                        parse_dates=['datetime_beginning_ept', 'datetime_beginning_utc'], 
+                        date_parser=date_parse).to_dict('records')
     records = list(reversed(records))
     current_day = None
     timestamps = []
